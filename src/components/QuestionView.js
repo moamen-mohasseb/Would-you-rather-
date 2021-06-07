@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {Link} from 'react-router-dom'
 class  QuestionView extends Component {
   
   render(){
@@ -16,7 +17,7 @@ class  QuestionView extends Component {
         <h3>Or</h3>
         <h3>2-{this.props.questionData.optionTwo.text}?</h3>
         </div  >
-        <button className="Poll Button" value={this.props.questionData.id} >view poll</button>
+        <Link className="Poll Button" to="/results" value={this.props.questionData.id} >view poll</Link>
 
       </form>
     }
