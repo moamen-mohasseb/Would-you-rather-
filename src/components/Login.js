@@ -1,45 +1,58 @@
 import React, { Component } from 'react'
+import Button from '@material-ui/core/Button';
+import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
 import LoadingBar from 'react-redux-loading'
+import {setAuthedUser} from '../actions/userAuth'
+
 class  Login extends Component {
-  handelSubmit = (e, id) => {
-    e.preventDefault()
-    this.props.history.push(`/results/${id}`)
+  state ={
+    user:'sarahedo'
   }
+ 
+  handelSubmit = () => {
+    console.log("handler:",this.state.user)
+    this.props.setAuthedUser(this.state.user)
+  }
+  
+  
   
   render(){
       console.log("users:",this.props.userid)
       const { userid } =this.props
       console.log("users Id:",userid.length)
-   return (
+     // const userR=this.selectedValue
+      return (
     <div className="App">
    Login
    <h3>Welcome to</h3>
 
-   <form>
+   <form >
    <h4>Would you Rather</h4>
-   <select>
+   <select  onChange={(e)=> {this.setState({user:e.target.value} )
+   console.log("herer here1",this.state.user)}}>
    <LoadingBar />
-   {userid.map(user =>(
+    
+   {
+   userid.map(user =>(
        <option value={user[0]}  key={user[0]} title="https://tylermcginnis.com/would-you-rather/sarah.jpg" >
-       
       {user[1].name}
        </option>
-     
-   ) )}
-         
+) )}
    </select>
-   
-   <button type='submit' >Sign in</button>
+   {console.log("herer here",this.state.user)}
+   <Button type="submit" component={Link} to={`/dashboard/${this.state.user}`} color="secondary"  onClick={this.handelSubmit}>Sign in</Button>
    </form>
     </div>
   )}
 }
-function mapStateToProps({ users })
+function mapStateToProps({ users ,authedUser})
 {
       return{
         
-        userid: Object.entries(users)
+        userid: Object.entries(users),
+        authedUser
+        
     }
 }
-export default connect(mapStateToProps)(Login);
+export default connect(mapStateToProps, {setAuthedUser} )(Login);

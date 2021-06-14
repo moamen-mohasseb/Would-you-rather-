@@ -13,7 +13,7 @@ class  QuestionView extends Component {
     <div className="App">
     {
       <form >
-        <Link className="Poll Button" to={`/results/${this.props.questionData.id  }`} value={this.props.questionData.id} >
+      
         <div><h2>{this.props.user.name} Ask this Question </h2></div>
         <div styles={"background-image : url(./images/1.png)"}>
         <h2>Would you Rather </h2>
@@ -21,22 +21,27 @@ class  QuestionView extends Component {
         <h3>Or</h3>
         <h3>2-{this.props.questionData.optionTwo.text}?</h3>
         </div  >
-        </Link>
+        <Link className="Poll Button" to={`/results/${this.props.questionData.id  }`} value={this.props.questionData.id} > View Poll</Link>
 
       </form>
     }
     </div>)
   }
 }
-function mapStateToProps({ questions , users },{id})
+function mapStateToProps({ questions , users, authedUser },{id})
 {
   const UserData=users[questions[id].author]
+  const ansQuest=Object.entries(users[UserData.id].answers)
+ 
+  console.log("Answers:",questions[ansQuest[0][0]]
+  )
  
       return{
         
         id,
         questionData: questions[id],
-        user:UserData
+        user:UserData,
+        ansQuest:questions[ansQuest[0][0]]
     }
 }
 export default withRouter(connect(mapStateToProps)(QuestionView))
