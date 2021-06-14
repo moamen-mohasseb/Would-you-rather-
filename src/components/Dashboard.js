@@ -9,7 +9,7 @@ class  Dashboard extends Component {
    return (
     <div className="App">
       {this.props.questionid.map(qid =>
-      <div>
+      <div key={qid}>
     <Questionview id={qid}/>
     </div>
       )}
