@@ -6,6 +6,7 @@ import LoadingBar from 'react-redux-loading'
 import Dashboard from './Dashboard'
 import VotesResults from './VotesResult'
 import LeaderBoard from './LeaderBoard'
+import Nav from "./Nav"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NewQuestion from './NewQuestion'
 class  App extends Component {
@@ -18,16 +19,16 @@ class  App extends Component {
    return (
      <Router>
     <div className="App">
-    starter code
+    <Nav />
     <LoadingBar />
     {this.props.loading === true
           ? null
           :<div>
-             <Route path='/' exact component={Login} />
-             <Route path='/dashboard' exact component={Dashboard} />
+             <Route exact path='/'  component={Login} />
+             <Route path='/dashboard/:id'  component={Dashboard} />
              <Route path='/results/:id'  component={VotesResults} />
-             <Route  path='/leaderboard' exact component={LeaderBoard} />
-             <Route  path='/newquestion' exact component={NewQuestion} />
+             <Route  path='/leaderboard'  component={LeaderBoard} />
+             <Route  path='/newquestion'  component={NewQuestion} />
            </div>
     }
     </div>
