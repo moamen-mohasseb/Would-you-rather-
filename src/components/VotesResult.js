@@ -3,7 +3,7 @@ import {connect} from 'react-redux'
 class  VotesResult extends Component {
   
   render(){
-    console.log("",this.props)
+    console.log(this.props)
    return (
     <div className="App">
    <div><h2>{this.props.user.name} Ask this Question </h2></div>
