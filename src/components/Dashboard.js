@@ -27,24 +27,31 @@ class  Dashboard extends Component {
           <Tab label="Un Answerd Questions" />
      </Tabs>
      </AppBar>
-     {value===0 && this.props.questionid.map(qid =>
+     {value===0 && this.props.answerdQuestion.map(qid =>
       <div>
     <Questionview id={qid}/>
     </div>
       )}
-      {value===1 && console.log("value:",value)}
+           {value===1 && this.props.unAnswerdQuestion.map(qid =>
+      <div>
+    <Questionview id={qid}/>
+    </div>
+      )}
    </>
   )}
 }
 function mapStateToProps({ questions , users, authedUser })
 {
-    const questionUser=Object.entries(questions).filter(q => q[1].optionOne.votes.includes(authedUser)||q[1].optionTwo.votes.includes(authedUser))
+    const answerdQuestion=Object.entries(questions).filter(q => q[1].optionOne.votes.includes(authedUser)||q[1].optionTwo.votes.includes(authedUser))
+    const unAnswerdQuestion=Object.entries(questions).filter(q => !q[1].optionOne.votes.includes(authedUser)||!q[1].optionTwo.votes.includes(authedUser))
+    
     //const ansQuest=Object.entries(users[questionUser.id].answers)
-    console.log("questionUser",questionUser)
+   // console.log("questionUser",questionUser)
       return{
         
-        questionid: Object.keys(questions)
-        
+        questionid: Object.keys(questions),
+        answerdQuestion: Object.keys(answerdQuestion),
+        unAnswerdQuestion: Object.keys(unAnswerdQuestion)
 
     }
 }
