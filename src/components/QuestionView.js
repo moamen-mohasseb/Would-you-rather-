@@ -8,21 +8,21 @@ class  QuestionView extends Component {
   }
   render(){
     console.log("here iam: ",this.props)
-    const {id,questions,users}=this.props
+    const {qid,questions,users}=this.props
    // console.log("user name:",users[questions[id][1].author)
    return (
     <div className="App">
     {
       <form >
       
-        <div><h2>{users.filter(user => user.id===questions[id][1].author).name} Ask this Question </h2></div>
+        <div><h2>{users.filter(user => user.id===qid.author).name} Ask this Question </h2></div>
         <div styles={"background-image : url(./images/1.png)"}>
-        <h2>Would you Rather </h2>
-        <h3>1-{questions[id][1].optionOne.text}?</h3>
+        <h2>Would you Rather {qid.id} </h2>
+        <h3>1-{qid.optionOne.text}?</h3>
         <h3>Or</h3>
-        <h3>2-{questions[id][1].optionTwo.text}?</h3>
+        <h3>2-{qid.optionTwo.text}?</h3>
         </div  >
-        <Link className="Poll Button" to={`/results/${questions[id][0]  }`} value={questions[id][0]} > View Poll</Link>
+        <Link className="Poll Button" to={`/results/${qid  }`} value={qid} > View Poll</Link>
       
       </form>
     }

@@ -29,12 +29,13 @@ class  Dashboard extends Component {
      </AppBar>
      {value===0 && this.props.answerdQuestion.map(qid =>
       <div>
-    <Questionview id={qid}/>
+
+    <Questionview key={qid.id} qid={qid}/>
     </div>
       )}
            {value===1 && this.props.unAnswerdQuestion.map(qid =>
       <div>
-    <Questionview id={qid}/>
+    <Questionview key={qid.id} qid={qid}/>
     </div>
       )}
    </>
@@ -43,15 +44,17 @@ class  Dashboard extends Component {
 function mapStateToProps({ questions , users, authedUser })
 {
     const answerdQuestion=Object.entries(questions).filter(q => q[1].optionOne.votes.includes(authedUser)||q[1].optionTwo.votes.includes(authedUser))
-    const unAnswerdQuestion=Object.entries(questions).filter(q => !q[1].optionOne.votes.includes(authedUser)||!q[1].optionTwo.votes.includes(authedUser))
+    const unAnswerdQuestion=Object.entries(questions).filter(q => !q[1].optionOne.votes.includes(authedUser) && !q[1].optionTwo.votes.includes(authedUser))
     
     //const ansQuest=Object.entries(users[questionUser.id].answers)
-   // console.log("questionUser",questionUser)
+    console.log("answerdQuestion",answerdQuestion)
+    console.log("UNanswerdQuestion",unAnswerdQuestion)
+
       return{
         
         questionid: Object.keys(questions),
-        answerdQuestion: Object.keys(answerdQuestion),
-        unAnswerdQuestion: Object.keys(unAnswerdQuestion)
+        answerdQuestion: answerdQuestion[0],
+        unAnswerdQuestion: unAnswerdQuestion[0]
 
     }
 }
