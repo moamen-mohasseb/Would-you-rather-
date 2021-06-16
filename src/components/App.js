@@ -9,7 +9,7 @@ import LeaderBoard from './LeaderBoard'
 import Nav from "./Nav"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NewQuestion from './NewQuestion'
-import Question from './Question'
+import Question from './AnswerQuestion'
 class  App extends Component {
   componentDidMount(){
     this.props.dispatch(handleInitialData())

@@ -1,8 +1,38 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import {handleSaveQuestion} from '../actions/users'
 class  NewQuestion extends Component {
-  
-  render(){
+  state={
+    optionOne:'',
+    optionTwo:''
+  }
+  handleSubmit= (e) => {
+    e.preventDefault()
+  console.log("new quest: ",this.props)
+  console.log("new quest State: ",this.state)
+    const { dispatch,authedUser } = this.props
+   
+    dispatch(handleSaveQuestion({
+      author: authedUser,
+      optionOne:this.state.optionOne,
+      optionTwo: this.state.optionTwo
+    }))
+  }
+  updateQuery = (query) => {
+    if(query){
+   this.setState(() => ({
+    optionOne: query
+   }))
+  }else{this.setState({optionOne: ''})} 
+}
+updateQuery1 = (query) => {
+  if(query){
+ this.setState(() => ({
+  optionTwo: query
+ }))
+}else{this.setState({optionTwo: ''})} 
+}
+    render(){
    return (
     <div className="App">
    <div>
@@ -13,11 +43,11 @@ class  NewQuestion extends Component {
      <h3>Would you rather</h3>
    </div>
    <form onSubmit={this.handleSubmit}>
-     <textarea value="question1" onChange={this.handleChange} placeholder="Question No1" maxLength={280}/>
+     <textarea placeholder="Question no1 " onChange={(event) => this.updateQuery(event.target.value)} placeholder="Question No1" maxLength={500}/>
      <br/>
      OR
      <br/>
-     <textarea  onChange={this.handleChange} placeholder="Question No2" maxLength={280}/>
+     <textarea  onChange={(event) => this.updateQuery1(event.target.value)} placeholder="Question No2" maxLength={500}/>
      <br/>
      <button type="submit" >Submit
               </button>
@@ -28,4 +58,14 @@ class  NewQuestion extends Component {
   )}
 }
 
-export default connect()(NewQuestion);
+function mapStateToProps({ questions , authedUser })
+{
+  
+      return{
+        questions,
+      
+        authedUser
+    }
+}
+
+export default connect(mapStateToProps)(NewQuestion);

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {Link,withRouter} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 class  QuestionView extends Component {
   toParent = (e, id) => {
     e.preventDefault()
@@ -22,8 +23,8 @@ class  QuestionView extends Component {
         <h3>Or</h3>
         <h3>2-{qid[1].optionTwo.text}?</h3>
         </div  >
-        {answerd==="true" ? <Link className="Poll Button" to={`/results/${qid[1].id}`} value={qid[1].id} > View Poll</Link>
-         : <Link className="Poll Button" to={`/answer/${qid[1].id}`} value={qid[1].id} > Answer Question</Link>}
+        {answerd==="true" ? <Button type="submit" component={Link} to={`/results/${qid[1].id}`} color="secondary"  >View Poll</Button>
+         : <Button type="submit" component={Link} to={`/answer/${qid[1].id}`} color="secondary"  >Answer Question</Button>}
       </form>
     }
     </div>)

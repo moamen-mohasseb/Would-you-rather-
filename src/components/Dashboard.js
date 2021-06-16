@@ -23,8 +23,8 @@ class  Dashboard extends Component {
      <>
      <AppBar position="relative">
     <Tabs value={value} onChange={this.handleChange} >
-          <Tab label="Answerd Questions"  />
-          <Tab label="Un Answerd Questions" />
+          <Tab key="1" label="Answerd Questions"  />
+          <Tab key="2" label="Un Answerd Questions" />
      </Tabs>
      </AppBar>
      {value===0 && this.props.answerdQuestion.map(qid =>
