@@ -9,6 +9,7 @@ import LeaderBoard from './LeaderBoard'
 import Nav from "./Nav"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NewQuestion from './NewQuestion'
+import Question from './Question'
 class  App extends Component {
   componentDidMount(){
     this.props.dispatch(handleInitialData())
@@ -29,6 +30,7 @@ class  App extends Component {
              <Route path='/results/:id'  component={VotesResults} />
              <Route  path='/leaderboard'  component={LeaderBoard} />
              <Route  path='/newquestion'  component={NewQuestion} />
+             <Route  path='/answer/:id'  component={Question} />
            </div>
     }
     </div>

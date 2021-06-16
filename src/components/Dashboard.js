@@ -30,12 +30,12 @@ class  Dashboard extends Component {
      {value===0 && this.props.answerdQuestion.map(qid =>
       <div>
 
-    <Questionview key={qid.id} qid={qid}/>
+    <Questionview answerd="true" key={qid.id} qid={qid}/>
     </div>
       )}
            {value===1 && this.props.unAnswerdQuestion.map(qid =>
       <div>
-    <Questionview key={qid.id} qid={qid}/>
+    <Questionview answerd="false" key={qid.id} qid={qid}/>
     </div>
       )}
    </>
@@ -53,8 +53,8 @@ function mapStateToProps({ questions , users, authedUser })
       return{
         
         questionid: Object.keys(questions),
-        answerdQuestion: answerdQuestion[0],
-        unAnswerdQuestion: unAnswerdQuestion[0]
+        answerdQuestion: answerdQuestion,
+        unAnswerdQuestion: unAnswerdQuestion
 
     }
 }
