@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import { Badge } from 'react-bootstrap'
 import { Image, Divider, Form, Grid, Segment} from 'semantic-ui-react'
+import Avatar from '@material-ui/core/Avatar';
 class  VotesResult extends Component {
 
   render(){
@@ -13,8 +14,9 @@ class  VotesResult extends Component {
    <Grid columns={2} relaxed='very' stackable>
    <Grid.Column>
    
-  
-    <Image src={userDetails.user[1].avatarURL} size='tiny' verticalAlign='middle' className="imagesize" />
+   <Avatar alt={userDetails.user[1].name} src={userDetails.user[1].avatarURL} />
+   
+    <h3>   {userDetails.user[1].name}</h3>
      <Divider />
     </Grid.Column>
     <Grid.Column>

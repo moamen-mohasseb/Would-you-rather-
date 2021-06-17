@@ -24,17 +24,17 @@ class  Dashboard extends Component {
      <div >
      <AppBar position="relative"  >
     <Tabs value={value} onChange={this.handleChange} >
-          <Tab key="1" label="Answerd Questions"  />
-          <Tab key="2" label="Un Answerd Questions" />
+          <Tab key="1" label="Un Answerd Questions"  />
+          <Tab key="2" label="Answerd Questions" />
      </Tabs>
      </AppBar>
-     {value===0 && this.props.answerdQuestion.map(qid =>
+     {value===1 && this.props.answerdQuestion.map(qid =>
       <div>
 
     <Questionview answerd="true" key={qid.id} qid={qid}/>
     </div>
       )}
-           {value===1 && this.props.unAnswerdQuestion.map(qid =>
+           {value===0 && this.props.unAnswerdQuestion.map(qid =>
       <div>
     <Questionview answerd="false" key={qid.id} qid={qid}/>
     </div>
