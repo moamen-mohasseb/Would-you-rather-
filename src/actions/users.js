@@ -17,10 +17,11 @@ export function saveAnswerToUser({  authedUser,qid, answer }) {
       answer
     };
   }
- function saveQuestionToUser(question) {
+ function saveQuestionToUser(author,id) {
     return {
       type: SAVE_QUESTION_TO_USER,
-      question
+      author,
+      id
     };
   }
   export function handleSaveQuestion (question) {
@@ -30,8 +31,10 @@ export function saveAnswerToUser({  authedUser,qid, answer }) {
       
   
       return _saveQuestion(question).then( question => {
+        console.log("question:",question,question.author,question.id)
         dispatch(saveQestionToQuestions(question))
-        dispatch(saveQuestionToUser(question))
+        
+        dispatch(saveQuestionToUser(question.author,question.id))
       })
         .catch((e) => {
           console.warn('Error in handleSaveQuestion: ', e)

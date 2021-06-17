@@ -16,7 +16,7 @@ class  App extends Component {
 
   }
   render(){
-   console.log(this.props)
+   console.log("WOOOOOW",this.props)
    return (
      <Router>
     <div className="App">
@@ -26,7 +26,7 @@ class  App extends Component {
           ? null
           :<div>
              <Route exact path='/'  component={Login} />
-             <Route path='/dashboard/:id'  component={Dashboard} />
+             <Route path={`/dashboard/${this.props.authedUser}`}  component={Dashboard} />
              <Route path='/results/:id'  component={VotesResults} />
              <Route  path='/leaderboard'  component={LeaderBoard} />
              <Route  path='/newquestion'  component={NewQuestion} />
@@ -37,14 +37,12 @@ class  App extends Component {
     </Router>
   )}
 }
-function mapStateToProps({ questions },{id})
+function mapStateToProps({ authedUser })
 {
  
       return{
         
-        id,
-        questionData: questions[id],
-        
+        authedUser
     }
 }
 

@@ -6,7 +6,7 @@ class  Nav extends Component {
   render(){
    return (
     <div className="App">
-             <div><Link to="/dashboard" >Dashboard</Link></div>
+             <div><Link to={`/dashboard/${this.props.authedUser}`} >Dashboard</Link></div>
              <div> <Link to="/newquestion" >Add new question</Link></div>
              <div> <Link to='/leaderboard' >Leaderboard</Link></div>
              <div> <Link exact to='/' >Log In</Link></div>

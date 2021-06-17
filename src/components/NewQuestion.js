@@ -43,7 +43,7 @@ updateQuery1 = (query) => {
      <h3>Would you rather</h3>
    </div>
    <form onSubmit={this.handleSubmit}>
-     <textarea placeholder="Question no1 " onChange={(event) => this.updateQuery(event.target.value)} placeholder="Question No1" maxLength={500}/>
+     <textarea placeholder="Question no1 " onChange={(event) => this.updateQuery(event.target.value)} maxLength={500}/>
      <br/>
      OR
      <br/>
