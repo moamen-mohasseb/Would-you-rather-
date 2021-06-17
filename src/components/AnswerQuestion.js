@@ -46,7 +46,7 @@ class  AnswerQuestion extends Component {
         </RadioGroup>
       </FormControl>
                 </div  >
-        <Button type="submit" component={Link} to={`/answer/${id}`} color="secondary" onClick={this.handleSaveAnswer} >Answer Question</Button>
+        <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} color="secondary" onClick={this.handleSaveAnswer} >Answer Question</Button>
       </form>
     }
     </div>)

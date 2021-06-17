@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import {handleSaveQuestion} from '../actions/users'
+import {Link,withRouter} from 'react-router-dom'
+import Button from '@material-ui/core/Button';
 class  NewQuestion extends Component {
   state={
     optionOne:'',
@@ -49,8 +51,7 @@ updateQuery1 = (query) => {
      <br/>
      <textarea  onChange={(event) => this.updateQuery1(event.target.value)} placeholder="Question No2" maxLength={500}/>
      <br/>
-     <button type="submit" >Submit
-              </button>
+     <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} color="secondary" onClick={this.handleSubmit} >Answer Question</Button>
 
     </form>
     

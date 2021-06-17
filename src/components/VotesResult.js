@@ -6,15 +6,17 @@ class  VotesResult extends Component {
     console.log(this.props)
    return (
      <div className="container">
-    <div className="mbox">
+    <div className="box">
    <div><h2>{this.props.user.name} Ask this Question </h2></div>
    <div><h2>Results </h2></div>
    <div >
         <h3>1-{this.props.questionData.optionOne.text}?</h3>
-        <h4>OK{this.props.userAuth}</h4>
+        <h4>OK{this.props.authedUser}</h4>
         <h4>{(this.props.questionData.optionOne.votes.length/(this.props.questionData.optionTwo.votes.length+this.props.questionData.optionOne.votes.length))*100}</h4>
+        <h4>{this.props.optionOne}</h4>
         <h3>2-{this.props.questionData.optionTwo.text}?</h3>
         <h4>{(this.props.questionData.optionTwo.votes.length/(this.props.questionData.optionTwo.votes.length+this.props.questionData.optionOne.votes.length))*100}</h4>
+        <h4>{this.props.optionTwo}</h4>
     </div>
     </div>
     </div>
@@ -23,17 +25,21 @@ class  VotesResult extends Component {
 }
   
 
-function mapStateToProps({userAuth,questions , users },props)
+function mapStateToProps({authedUser,questions , users },props)
 {
   
   const { id } = props.match.params
   const UserData=users[questions[id].author]
  
       return{
-        userAuth,
+        authedUser,
         id,
         questionData: questions[id],
-        user:UserData
-    }
+        user:UserData,
+        optionOne:questions[id].optionOne.votes.includes(authedUser) ?"optionOne"
+        : null,
+        optionTwo:questions[id].optionTwo.votes.includes(authedUser) ?"optionTwo"
+        : null
+      }
 }
 export default connect(mapStateToProps)(VotesResult);
