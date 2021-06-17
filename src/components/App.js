@@ -10,6 +10,7 @@ import Nav from "./Nav"
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import NewQuestion from './NewQuestion'
 import Question from './AnswerQuestion'
+import '../app.css'
 class  App extends Component {
   componentDidMount(){
     this.props.dispatch(handleInitialData())
@@ -20,12 +21,14 @@ class  App extends Component {
    return (
      <Router>
     <div className="App">
-    <Nav />
     <LoadingBar />
     {this.props.loading === true
           ? null
-          :<div>
+          :
+          <div>
+             <Nav />
              <Route exact path='/'  component={Login} />
+             <Route exact path='/login'  component={Login} />
              <Route path={`/dashboard/${this.props.authedUser}`}  component={Dashboard} />
              <Route path='/results/:id'  component={VotesResults} />
              <Route  path='/leaderboard'  component={LeaderBoard} />

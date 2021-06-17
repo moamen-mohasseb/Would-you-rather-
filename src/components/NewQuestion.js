@@ -34,7 +34,7 @@ updateQuery1 = (query) => {
 }
     render(){
    return (
-    <div className="App">
+    <div className="container">
    <div>
      <h2>Create New Questions</h2>
    </div>

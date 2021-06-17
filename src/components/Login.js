@@ -23,12 +23,11 @@ class  Login extends Component {
       console.log("users Id:",userid.length)
      // const userR=this.selectedValue
       return (
-    <div className="App">
+    <div className="container">
    Login
-   <h3>Welcome to</h3>
+   <h3 className="header">Welcome to Would you Rather</h3>
 
    <form >
-   <h4>Would you Rather</h4>
    <select  onChange={(e)=> {this.setState({user:e.target.value} )
    console.log("herer here1",this.state.user)}}>
    <LoadingBar />

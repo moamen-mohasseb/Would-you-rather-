@@ -31,7 +31,7 @@ class  AnswerQuestion extends Component {
     console.log("here iam: ",this.props)
     const {questions,id}=this.props
    return (
-    <div className="App">
+    <div className="container">
     {
       <form >
       

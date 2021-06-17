@@ -1,14 +1,20 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
+import { Card } from 'react-bootstrap'
+import UserCard  from './UserCard'
+//import image from '../../images'
 class  LeaderBoard extends Component {
   
   render(){
    return (
-    <div className="App">
-   LeaderBoard
-    
-    </div>
-  )}
+     <div className="container">
+       {this.props.usersboard.map(user =>
+       <UserCard  userDetails={user} />
+       )}
+     </div>
+   
+)
+}
 }
 function mapStateToProps({ users, authedUser })
 {
@@ -28,7 +34,7 @@ function mapStateToProps({ users, authedUser })
         
     //    id,
         
-        users:board.sort((a, b) => b.score-a.score )
+        usersboard:board.sort((a, b) => b.score-a.score )
         //ansQuest:questions[ansQuest[0][0]]
     }
 }

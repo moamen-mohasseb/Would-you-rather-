@@ -5,12 +5,12 @@ class  VotesResult extends Component {
   render(){
     console.log(this.props)
    return (
-    <div className="App">
+    <div className="container">
    <div><h2>{this.props.user.name} Ask this Question </h2></div>
    <div><h2>Results </h2></div>
    <div >
         <h3>1-{this.props.questionData.optionOne.text}?</h3>
-        <h2>OK{this.props.userAuth}</h2>
+        <h4>OK{this.props.userAuth}</h4>
         <h4>{(this.props.questionData.optionOne.votes.length/(this.props.questionData.optionTwo.votes.length+this.props.questionData.optionOne.votes.length))*100}</h4>
         <h3>2-{this.props.questionData.optionTwo.text}?</h3>
         <h4>{(this.props.questionData.optionTwo.votes.length/(this.props.questionData.optionTwo.votes.length+this.props.questionData.optionOne.votes.length))*100}</h4>
