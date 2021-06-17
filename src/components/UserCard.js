@@ -8,7 +8,7 @@ class  VotesResult extends Component {
     const {userDetails} = this.props
     console.log(userDetails)
    return (
-    <div className="App">
+    <div className="box">
    <Segment placeholder>
    <Grid columns={2} relaxed='very' stackable>
    <Grid.Column>

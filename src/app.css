@@ -41,7 +41,22 @@ code {
     text-align: center;
     text-overflow: ellipsis;
 }
-
+.box{
+    border-style: solid;
+    width:50%;
+    padding: 11px;
+    border-color: lightgray;
+    -ms-flex-align: center;
+     ;
+}
+.formbox{
+    
+    width:100%;
+    padding: 11px;
+    border-color: lightgray;
+    -ms-flex-align: center;
+     ;
+}
 .cell {
     border-style: solid;
     padding: 11px;

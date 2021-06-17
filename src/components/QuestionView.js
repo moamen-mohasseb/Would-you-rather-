@@ -12,11 +12,11 @@ class  QuestionView extends Component {
     const {answerd,qid}=this.props
     console.log("answerd:",answerd)
    return (
-    <div className="container">
+    <div >
     {
-      <form >
+      <form className="formbox" >
       
-        <div><h3 className="header">{qid[1].author} Ask this Question </h3></div>
+        <div key={qid[1].id}><h3 className="header">{qid[1].author} Ask this Question </h3></div>
         <div styles={"background-image : url(./images/1.png)"}>
         <h2>Would you Rather {qid[1].id} </h2>
         <h3>1-{qid[1].optionOne.text}?</h3>

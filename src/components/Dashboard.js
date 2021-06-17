@@ -21,7 +21,8 @@ class  Dashboard extends Component {
     console.log("dddd",value)
    return (
      <div className="container">
-     <AppBar position="relative" class='mainheader' >
+     <div >
+     <AppBar position="relative"  >
     <Tabs value={value} onChange={this.handleChange} >
           <Tab key="1" label="Answerd Questions"  />
           <Tab key="2" label="Un Answerd Questions" />
@@ -38,6 +39,7 @@ class  Dashboard extends Component {
     <Questionview answerd="false" key={qid.id} qid={qid}/>
     </div>
       )}
+  </div>
   </div>
   )}
 }

@@ -24,10 +24,11 @@ class  Login extends Component {
      // const userR=this.selectedValue
       return (
     <div className="container">
-   Login
-   <h3 className="header">Welcome to Would you Rather</h3>
+  
+   
 
-   <form >
+   <form  className="box">
+   <h3 className="header">Welcome to Would you Rather</h3>
    <select  onChange={(e)=> {this.setState({user:e.target.value} )
    console.log("herer here1",this.state.user)}}>
    <LoadingBar />

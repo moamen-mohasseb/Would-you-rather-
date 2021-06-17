@@ -35,14 +35,14 @@ updateQuery1 = (query) => {
     render(){
    return (
     <div className="container">
-   <div>
+  
+   <form onSubmit={this.handleSubmit}  className="box">
+   <div >
      <h2>Create New Questions</h2>
-   </div>
-   <div>
+  
      <h3>Complete Question</h3>
      <h3>Would you rather</h3>
    </div>
-   <form onSubmit={this.handleSubmit}>
      <textarea placeholder="Question no1 " onChange={(event) => this.updateQuery(event.target.value)} maxLength={500}/>
      <br/>
      OR

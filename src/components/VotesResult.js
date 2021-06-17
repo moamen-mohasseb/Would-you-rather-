@@ -5,7 +5,8 @@ class  VotesResult extends Component {
   render(){
     console.log(this.props)
    return (
-    <div className="container">
+     <div className="container">
+    <div className="mbox">
    <div><h2>{this.props.user.name} Ask this Question </h2></div>
    <div><h2>Results </h2></div>
    <div >
@@ -14,6 +15,7 @@ class  VotesResult extends Component {
         <h4>{(this.props.questionData.optionOne.votes.length/(this.props.questionData.optionTwo.votes.length+this.props.questionData.optionOne.votes.length))*100}</h4>
         <h3>2-{this.props.questionData.optionTwo.text}?</h3>
         <h4>{(this.props.questionData.optionTwo.votes.length/(this.props.questionData.optionTwo.votes.length+this.props.questionData.optionOne.votes.length))*100}</h4>
+    </div>
     </div>
     </div>
    )
