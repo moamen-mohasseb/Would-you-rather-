@@ -17,7 +17,7 @@ class  Nav extends Component {
              <div><Link to={`/dashboard/${this.props.authedUser}`} >Dashboard</Link></div>
              <div> <Link to="/newquestion" >Add new question</Link></div>
              <div> <Link to='/leaderboard' >Leaderboard</Link></div>
-             <div> <Link exact to='/' >Log In</Link></div>
+            
           {this.props.authedUser &&   <div>Welcome {this.props.authedUser}
              <Avatar alt={this.props.user.name} src={this.props.user.avatarURL} /> </div>
    }

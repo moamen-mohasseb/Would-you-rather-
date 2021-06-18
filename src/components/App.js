@@ -7,7 +7,7 @@ import Dashboard from './Dashboard'
 import VotesResults from './VotesResult'
 import LeaderBoard from './LeaderBoard'
 import Nav from "./Nav"
-import { BrowserRouter as Router, Route ,Switch} from 'react-router-dom'
+import { BrowserRouter as Router, Redirect, Route ,Switch} from 'react-router-dom'
 import NewQuestion from './NewQuestion'
 import Question from './AnswerQuestion'
 import '../app.css'
@@ -25,6 +25,7 @@ class  App extends Component {
     <LoadingBar />
     {        this.props.authedUser==='' ?
             <div>
+              <Redirect to='/login'/>
              <Route exact path='/'  component={Login} />
              <Route exact path='/login'  component={Login} />
              </div>
