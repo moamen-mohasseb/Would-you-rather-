@@ -29,7 +29,7 @@ class  Dashboard extends Component {
      </Tabs>
      </AppBar>
      {value===1 && this.props.answerdQuestion.map(qid =>
-      <div>
+      <div key={qid.id}>
 
     <Questionview answerd="true" key={qid.id} qid={qid}/>
     </div>
@@ -49,14 +49,14 @@ function mapStateToProps({ questions , users, authedUser })
     const unAnswerdQuestion=Object.entries(questions).filter(q => !q[1].optionOne.votes.includes(authedUser) && !q[1].optionTwo.votes.includes(authedUser))
     
     //const ansQuest=Object.entries(users[questionUser.id].answers)
-    console.log("answerdQuestion",answerdQuestion)
-    console.log("UNanswerdQuestion",unAnswerdQuestion)
+    console.log("answerdQuestion",answerdQuestion.sort((a, b) => b.timestamp - a.timestamp))
+    console.log("UNanswerdQuestion",unAnswerdQuestion.sort((a, b) => b.timestamp - a.timestamp))
 
       return{
         
         questionid: Object.keys(questions),
-        answerdQuestion: answerdQuestion.sort((a, b) => b.timestamp-a.timestamp ),
-        unAnswerdQuestion: unAnswerdQuestion.sort((a, b) => b.timestamp-a.timestamp )
+        answerdQuestion: answerdQuestion.sort((a, b) => b.timestamp - a.timestamp),
+        unAnswerdQuestion: unAnswerdQuestion.sort((a, b) => b.timestamp - a.timestamp)
 
     }
 }

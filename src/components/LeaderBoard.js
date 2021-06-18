@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { Card } from 'react-bootstrap'
+//import { Card } from 'react-bootstrap'
 import UserCard  from './UserCard'
 //import image from '../../images'
 class  LeaderBoard extends Component {

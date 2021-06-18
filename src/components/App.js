@@ -7,10 +7,11 @@ import Dashboard from './Dashboard'
 import VotesResults from './VotesResult'
 import LeaderBoard from './LeaderBoard'
 import Nav from "./Nav"
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route ,Switch} from 'react-router-dom'
 import NewQuestion from './NewQuestion'
 import Question from './AnswerQuestion'
 import '../app.css'
+import {Header } from 'semantic-ui-react';
 class  App extends Component {
   componentDidMount(){
     this.props.dispatch(handleInitialData())
@@ -22,18 +23,22 @@ class  App extends Component {
      <Router>
     <div className="App">
     <LoadingBar />
-    {this.props.loading === true
-          ? null
-          :
-          <div>
-             <Nav />
+    {        this.props.authedUser==='' ?
+            <div>
              <Route exact path='/'  component={Login} />
              <Route exact path='/login'  component={Login} />
+             </div>
+             : 
+             <div>
+              <Nav/>
+              <Switch>
              <Route path={`/dashboard/${this.props.authedUser}`}  component={Dashboard} />
              <Route path='/results/:id'  component={VotesResults} />
              <Route  path='/leaderboard'  component={LeaderBoard} />
              <Route  path='/newquestion'  component={NewQuestion} />
              <Route  path='/answer/:id'  component={Question} />
+             <Route render={()=> <Header as="h3">No Match 404 Error</Header>} />
+             </Switch>
            </div>
     }
     </div>

@@ -8,21 +8,21 @@ export default function users(state={},action){
             ...action.users
           } ;
           case SAVE_ANSWER_TO_USER:
-      const { authUser, qid, answer } = action;
+      const { authedUser, qid, answer } = action;
 
       return {
         ...state,
-        [authUser]: {
-          ...state[authUser],
+        [authedUser]: {
+          ...state[authedUser],
           answers: {
-            ...state[authUser].answers,
+            ...state[authedUser].answers,
             [qid]: answer
           }
         }
       };
     case SAVE_QUESTION_TO_USER:
       const { id, author } = action;
-
+console.log('SAVE_QUESTION_TO_USER: ',id, author )
       return {
         ...state,
         [author]: {

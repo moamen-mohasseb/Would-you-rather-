@@ -2,34 +2,27 @@ import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
 import { Link } from 'react-router-dom';
 import {connect} from 'react-redux'
-import LoadingBar from 'react-redux-loading'
+//import LoadingBar from 'react-redux-loading'
 import {setAuthedUser} from '../actions/userAuth'
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel  from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Avatar from '@material-ui/core/Avatar';
-import NativeSelect from '@material-ui/core/NativeSelect';
-import { makeStyles } from '@material-ui/core/styles';
+//import NativeSelect from '@material-ui/core/NativeSelect';
+//import { makeStyles } from '@material-ui/core/styles';
 
 
 
 
 class  Login extends Component {
   state ={
-    user:'sarahedo'
+    user:''
   }
-  
-  
- 
- 
   handelSubmit = () => {
     console.log("handler:",this.state.user)
     this.props.setAuthedUser(this.state.user)
   }
-  
-  
-  
   render(){
       console.log("users:",this.props.userid)
       const { userid } =this.props
@@ -37,9 +30,6 @@ class  Login extends Component {
      // const userR=this.selectedValue
       return (
     <div className="container">
-  
-   
-
    <form  className="box">
    <h3 className="header">Welcome to Would you Rather</h3>
    <FormControl variant="filled" className="menuitem">
@@ -47,7 +37,7 @@ class  Login extends Component {
         <Select
           labelId="demo-simple-select-filled-label"
           id="demo-simple-select-filled"
-          value={this.state.value}
+          value={this.state.user}
           onChange={(e)=> {this.setState({user:e.target.value})}}      
         >
          {

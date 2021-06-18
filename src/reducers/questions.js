@@ -8,21 +8,21 @@ export default function questions(state={},action){
             ...action.questions
           } 
           case SAVE_ANSWER_TO_QUESTION:
-            const { authUser, qid, answer } = action;
-      
+            const { authedUser, qid, answer } = action;
+      console.log("reducers :",state[qid][answer])
             return {
               ...state,
               [qid]: {
                 ...state[qid],
                 [answer]: {
                   ...state[qid][answer],
-                  votes: state[qid][answer].votes.concat(authUser)
+                  votes: state[qid][answer].votes.concat(authedUser)
                 }
               }
             }
           case SAVE_QUESTION_TO_QUESTIONS:
             const { question } = action;
-      
+            console.log('SAVE_QUESTION_TO_Questions: ',question )
             return {
               ...state,
               [question.id]: question

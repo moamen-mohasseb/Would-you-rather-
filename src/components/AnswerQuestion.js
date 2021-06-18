@@ -28,7 +28,7 @@ class  AnswerQuestion extends Component {
     }))
   }
   render(){
-    console.log("here iam: ",this.props)
+  //  console.log("here iam: ",this.props)
     const {questions,id}=this.props
    return (
     <div className="container">

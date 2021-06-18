@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import { Badge } from 'react-bootstrap'
-import { Image, Divider, Form, Grid, Segment} from 'semantic-ui-react'
+//import { Badge } from 'react-bootstrap'
+import { Divider, Grid, Segment} from 'semantic-ui-react'
 import Avatar from '@material-ui/core/Avatar';
 class  VotesResult extends Component {
 

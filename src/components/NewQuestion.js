@@ -10,14 +10,14 @@ class  NewQuestion extends Component {
   }
   handleSubmit= (e) => {
     e.preventDefault()
-  console.log("new quest: ",this.props)
-  console.log("new quest State: ",this.state)
+  //console.log("new quest: ",this.props)
+  console.log("new quest State: ",this.state.optionOne,this.state.optionTwo)
     const { dispatch,authedUser } = this.props
    
     dispatch(handleSaveQuestion({
       author: authedUser,
-      optionOne:this.state.optionOne,
-      optionTwo: this.state.optionTwo
+      optionOneText:this.state.optionOne,
+      optionTwoText: this.state.optionTwo
     }))
   }
   updateQuery = (query) => {
@@ -69,4 +69,4 @@ function mapStateToProps({ questions , authedUser })
     }
 }
 
-export default connect(mapStateToProps)(NewQuestion);
+export default withRouter(connect(mapStateToProps)(NewQuestion));
