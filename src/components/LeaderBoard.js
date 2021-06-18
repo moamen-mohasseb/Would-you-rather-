@@ -7,7 +7,7 @@ class  LeaderBoard extends Component {
   
   render(){
    return (
-     <div className="container">
+     <div >
        {this.props.usersboard.map(user =>
        <UserCard key={user.user[0]} userDetails={user} />
        )}

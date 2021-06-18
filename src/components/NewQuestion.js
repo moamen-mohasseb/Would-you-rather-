@@ -3,6 +3,8 @@ import {connect} from 'react-redux'
 import {handleSaveQuestion} from '../actions/shared'
 import {Link,withRouter} from 'react-router-dom'
 import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+
 class  NewQuestion extends Component {
   state={
     optionOne:'',
@@ -46,11 +48,30 @@ updateQuery1 = (query) => {
      <h3>Complete Question</h3>
      <h3>Would you rather</h3>
    </div>
-     <textarea placeholder="Question no1 " onChange={(event) => this.updateQuery(event.target.value)} maxLength={500}/>
+     <TextField
+          id="1"
+          label="Option one"
+          placeholder="Question no1"
+          helperText="first option"
+          fullWidth
+          onChange={(event) => this.updateQuery(event.target.value)}
+          margin="normal"
+          variant="filled"
+        />
      <br/>
      OR
      <br/>
-     <textarea  onChange={(event) => this.updateQuery1(event.target.value)} placeholder="Question No2" maxLength={500}/>
+     <TextField
+          id="1"
+          label="Option two"
+          placeholder="Question no2"
+          helperText="second option"
+          fullWidth
+          onChange={(event) => this.updateQuery1(event.target.value)}
+          margin="normal"
+          variant="filled"
+        />
+     
      <br/>
      <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} color="secondary" onClick={this.handleSubmit} >Answer Question</Button>
   

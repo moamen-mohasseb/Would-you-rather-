@@ -72,3 +72,32 @@ code {
     height:30%
 
 }
+.score{
+    display: flex;
+    justify-content: center;
+    align-items:center;
+    font-weight: bold;
+    color:white;
+    background-color:crimson;
+    padding: 1rem;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  .leader{
+     display: flexbox;
+     flex-flow: column; 
+  }
+  .leader-container {
+    display: flex;
+    align-items: stretch;
+  }
+  .leader-container > div {    
+    
+    margin: 10px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }

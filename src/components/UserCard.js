@@ -1,32 +1,61 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 //import { Badge } from 'react-bootstrap'
-import { Divider, Grid, Segment} from 'semantic-ui-react'
-import Avatar from '@material-ui/core/Avatar';
+import { Image, Grid, Segment} from 'semantic-ui-react'
+//import {Image} from '@material-ui/core';
 class  VotesResult extends Component {
 
   render(){
     const {userDetails} = this.props
     console.log(userDetails)
    return (
-    <div className="box">
-   <Segment placeholder>
-   <Grid columns={2} relaxed='very' stackable>
+    <div>
+   
+   <Grid columns={3} divided>
+   <Grid.Row>
    <Grid.Column>
-   
-   <Avatar alt={userDetails.user[1].name} src={userDetails.user[1].avatarURL} />
-   
+   <div>
+   <img alt={userDetails.user[1].name} src={userDetails.user[1].avatarURL} className='imagesize' />   
     <h3>   {userDetails.user[1].name}</h3>
-     <Divider />
+    </div>
     </Grid.Column>
     <Grid.Column>
-           <div className="cell">Answered Questions: {userDetails.answersLength}</div>
-            <div className="cell">Created Question: {userDetails.questionsLength}</div>
-            <div className="cell">Score: {userDetails.score}</div>
+         <div >Answered Questions: {userDetails.answersLength}</div>
+    
+          <div> Created Question: {userDetails.questionsLength}</div>  
     
     </Grid.Column>
+    <Grid.Column>
+    <div className="score">Score: 
+            {userDetails.score}</div>
+    </Grid.Column>
+    </Grid.Row>
     </Grid>
-    </Segment>
+    <Grid columns={3} divided>
+    <Grid.Row>
+      <Grid.Column>
+        <Image src='/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+    </Grid.Row>
+
+    <Grid.Row>
+      <Grid.Column>
+        <Image src='/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+      <Grid.Column>
+        <Image src='/images/wireframe/media-paragraph.png' />
+      </Grid.Column>
+    </Grid.Row>
+  </Grid>
     
     </div>
   )}

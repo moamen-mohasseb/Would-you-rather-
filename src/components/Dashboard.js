@@ -47,16 +47,11 @@ function mapStateToProps({ questions , users, authedUser })
 {
     const answerdQuestion=Object.entries(questions).filter(q => q[1].optionOne.votes.includes(authedUser)||q[1].optionTwo.votes.includes(authedUser))
     const unAnswerdQuestion=Object.entries(questions).filter(q => !q[1].optionOne.votes.includes(authedUser) && !q[1].optionTwo.votes.includes(authedUser))
-    
-    //const ansQuest=Object.entries(users[questionUser.id].answers)
-    console.log("answerdQuestion",answerdQuestion.sort((a, b) => b.timestamp - a.timestamp))
-    console.log("UNanswerdQuestion",unAnswerdQuestion.sort((a, b) => b.timestamp - a.timestamp))
-
-      return{
+            return{
         
         questionid: Object.keys(questions),
-        answerdQuestion: answerdQuestion.sort((a, b) => b.timestamp - a.timestamp),
-        unAnswerdQuestion: unAnswerdQuestion.sort((a, b) => b.timestamp - a.timestamp)
+        answerdQuestion: answerdQuestion.sort((a, b) => b[1].timestamp - a[1].timestamp),
+        unAnswerdQuestion: unAnswerdQuestion.sort((a, b) => b[1].timestamp - a[1].timestamp)
 
     }
 }

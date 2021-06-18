@@ -27,7 +27,7 @@ class  AnswerQuestion extends Component {
     this.setState({value:event.target.value});
     console.log("Radio Choice",this.state.value)
   };
-  handleSaveAnswer = (e) => {
+  handleSubmit= (e) => {
     e.preventDefault()
   
     const { dispatch,authedUser,id } = this.props
@@ -37,7 +37,8 @@ class  AnswerQuestion extends Component {
       qid:id,
       answer: this.state.value
     }))
-    this.props.history.push(`/answer/${id}`)
+   // console.log(`//${id}`)
+    this.props.history.push(`/results/${id}`)
   }
   render(){
   //  console.log("here iam: ",this.props)
@@ -46,7 +47,7 @@ class  AnswerQuestion extends Component {
    return (
     <div  className="container">
     {
-      <form >
+      <form onSubmit={this.handleSubmit}>
       
         <div><h2>{questions[id].author} Ask this Question </h2></div>
         <div styles={"background-image : url(./images/1.png)"}>
@@ -59,7 +60,7 @@ class  AnswerQuestion extends Component {
         </RadioGroup>
       </FormControl>
                 </div  >
-        <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} color="secondary" onClick={this.handleSaveAnswer} >Answer Question</Button>
+        <Button type="submit" component={Link} to={`/results/${questions[id]}`} color="secondary" onClick={this.handleSubmit} >Answer Question</Button>
        
 
       </form>
