@@ -1,29 +1,68 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {Link} from 'react-router-dom'
-import Avatar from '@material-ui/core/Avatar';
-//import Button from '@material-ui/core/Button';
+import {Link,withRouter} from 'react-router-dom'
+import {
+  AppBar,
+  Toolbar,
+  Box,
+  Button,
+  ListItem,
+  ListItemAvatar,
+  Avatar,
+  ListItemText,
+} from '@material-ui/core'
 import {deleteAuthedUser} from '../actions/userAuth'
 class  Nav extends Component {
   
   handleSubmit = e => {
     e.preventDefault();
     this.props.deleteAuthedUser();
+    this.props.history.push('/login')
   };
   render(){
     console.log("nav :",this.props)
    return (
-    <div className="App">
-             <div><Link to={`/dashboard/${this.props.authedUser}`} >Dashboard</Link></div>
-             <div> <Link to="/newquestion" >Add new question</Link></div>
-             <div> <Link to='/leaderboard' >Leaderboard</Link></div>
-            
-          {this.props.authedUser &&   <div>Welcome {this.props.authedUser}
-             <Avatar alt={this.props.user.name} src={this.props.user.avatarURL} /> </div>
+    <AppBar
+    position="static"
+    color="default"
+    
+  >
+    <Toolbar className='navigationbar'>
+      <Box className='item' >
+      <ListItem button>
+      <Link to={`/dashboard/${this.props.authedUser}`} >Home</Link>
+      </ListItem>
+      </Box>
+      <Box className='item' >
+      <ListItem button>
+      <Link to="/newquestion" >Add new question</Link>
+      </ListItem>
+      </Box>
+      <Box className='item' >
+      <ListItem button>
+      <Link to='/leaderboard' >Leaderboard</Link>
+      </ListItem>
+      </Box>
+      <Box className='item' >
+        <ListItem button>
+          <ListItemAvatar>
+          {this.props.authedUser &&  
+             <Avatar alt={this.props.user.name} src={this.props.user.avatarURL} className="imagesize" /> 
    }
-   <div> <Link to="/" onClick={this.handleSubmit} >Log Out</Link></div>
-            
-    </div>
+          </ListItemAvatar>
+          <ListItemText primary={this.props.authedUser} />
+        </ListItem>
+        <Button
+          onClick={this.handleSubmit}
+          color="secondary"
+                    
+        >
+          LogOut
+        </Button>
+      </Box>
+    </Toolbar>
+  </AppBar>
+    
   )}
 }
 function mapStateToProps({ users, authedUser })
@@ -38,4 +77,4 @@ function mapStateToProps({ users, authedUser })
     }
 }
 
-export default connect(mapStateToProps,{deleteAuthedUser})(Nav);
+export default withRouter(connect(mapStateToProps,{deleteAuthedUser})(Nav));
