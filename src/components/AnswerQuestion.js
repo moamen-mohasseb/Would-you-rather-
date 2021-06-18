@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
-import {Link,withRouter} from 'react-router-dom'
+import {Link,withRouter,Route,Redirect} from 'react-router-dom'
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -8,10 +8,21 @@ import FormControl from '@material-ui/core/FormControl';
 import FormLabel from '@material-ui/core/FormLabel';
 import Button from '@material-ui/core/Button';
 import {handleSaveAnswer} from '../actions/shared'
+import {Header } from 'semantic-ui-react';
+import Login from './Login'
 class  AnswerQuestion extends Component {
   state={
-    value:"optionOne"
+    value:"optionOne",
+    hasError:false
   }
+  componentDidCatch(error, info) {
+    // Display fallback UI
+    this.setState({ hasError: true });
+
+    // You can also log the error to an error reporting service
+    //logErrorToMyService(error, info);
+  }
+
   handleChange = (event) => {
     this.setState({value:event.target.value});
     console.log("Radio Choice",this.state.value)
@@ -26,12 +37,14 @@ class  AnswerQuestion extends Component {
       qid:id,
       answer: this.state.value
     }))
+    this.props.history.push(`/answer/${id}`)
   }
   render(){
   //  console.log("here iam: ",this.props)
+  try{
     const {questions,id}=this.props
    return (
-    <div className="container">
+    <div  className="container">
     {
       <form >
       
@@ -47,11 +60,27 @@ class  AnswerQuestion extends Component {
       </FormControl>
                 </div  >
         <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} color="secondary" onClick={this.handleSaveAnswer} >Answer Question</Button>
+       
+
       </form>
     }
     </div>)
   }
+  catch(erre){
+    return(
+     <div>
+     <Route render={()=> <Header as="h3">No Match 404 Error</Header>} />
+     <Redirect to='/login'/>
+    <Route exact path='/'  component={Login} />
+    <Route exact path='/login'  component={Login} />
+    </div>
+   
+    )
+  }
 }
+}
+
+
 function mapStateToProps({ questions , users, authedUser },props)
 {
   const { id } = props.match.params

@@ -19,6 +19,7 @@ class  NewQuestion extends Component {
       optionOneText:this.state.optionOne,
       optionTwoText: this.state.optionTwo
     }))
+    this.props.history.push(`/dashboard/${this.props.authedUser}`)
   }
   updateQuery = (query) => {
     if(query){
@@ -52,7 +53,7 @@ updateQuery1 = (query) => {
      <textarea  onChange={(event) => this.updateQuery1(event.target.value)} placeholder="Question No2" maxLength={500}/>
      <br/>
      <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} color="secondary" onClick={this.handleSubmit} >Answer Question</Button>
-
+  
     </form>
     
     </div>
