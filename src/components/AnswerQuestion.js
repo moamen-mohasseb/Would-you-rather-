@@ -84,6 +84,7 @@ class  AnswerQuestion extends Component {
 function mapStateToProps({ questions , users, authedUser },props)
 {
   const { id } = props.match.params
+  try{
       return{
         
         id,
@@ -92,5 +93,9 @@ function mapStateToProps({ questions , users, authedUser },props)
         users:Object.entries(users),
         authedUser
     }
+  }
+  catch(err){
+    return {}
+  }
 }
 export default withRouter(connect(mapStateToProps)(AnswerQuestion))

@@ -12,10 +12,7 @@ class  NewQuestion extends Component {
   }
   handleSubmit= (e) => {
     e.preventDefault()
-  //console.log("new quest: ",this.props)
-  console.log("new quest State: ",this.state.optionOne,this.state.optionTwo)
-    const { dispatch,authedUser } = this.props
-   
+     const { dispatch,authedUser } = this.props
     dispatch(handleSaveQuestion({
       author: authedUser,
       optionOneText:this.state.optionOne,
@@ -53,6 +50,7 @@ updateQuery1 = (query) => {
           placeholder="Question no1"
           helperText="first option"
           fullWidth
+          required
           onChange={(event) => this.updateQuery(event.target.value)}
           margin="normal"
           variant="filled"
@@ -66,13 +64,15 @@ updateQuery1 = (query) => {
           placeholder="Question no2"
           helperText="second option"
           fullWidth
+          required
           onChange={(event) => this.updateQuery1(event.target.value)}
           margin="normal"
           variant="filled"
         />
      
      <br/>
-     <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} color="secondary" onClick={this.handleSubmit} >Answer Question</Button>
+     <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} 
+     disabled={this.state.optionOne==='' || this.state.optionTwo===''} color="secondary" onClick={this.handleSubmit} >Answer Question</Button>
   
     </form>
     

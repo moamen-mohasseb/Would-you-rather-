@@ -1,33 +1,23 @@
 import React, { Component } from 'react'
 import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 import {connect} from 'react-redux'
-//import LoadingBar from 'react-redux-loading'
 import {setAuthedUser} from '../actions/userAuth'
 import MenuItem from '@material-ui/core/MenuItem';
 import InputLabel  from '@material-ui/core/InputLabel';
 import FormControl from '@material-ui/core/FormControl';
 import Select from '@material-ui/core/Select';
 import Avatar from '@material-ui/core/Avatar';
-//import NativeSelect from '@material-ui/core/NativeSelect';
-//import { makeStyles } from '@material-ui/core/styles';
-
-
-
-
 class  Login extends Component {
   state ={
     user:''
   }
   handelSubmit = () => {
-    console.log("handler:",this.state.user)
     this.props.setAuthedUser(this.state.user)
+    this.props.history.push(`/dashboard/${this.state.user}`) 
   }
   render(){
-      console.log("users:",this.props.userid)
       const { userid } =this.props
-      console.log("users Id:",userid.length)
-     // const userR=this.selectedValue
       return (
     <div className="container">
    <form  className="box">
@@ -49,7 +39,8 @@ class  Login extends Component {
       </FormControl>
  
    {console.log("herer here",this.state.user)}
-   <Button type="submit" component={Link} to={`/dashboard/${this.state.user}`} color="secondary"  onClick={this.handelSubmit}>Sign in</Button>
+   <Button type="submit" color="secondary"  onClick={this.handelSubmit}
+   disabled={this.state.user===''}>Sign in</Button>
    </form>
     </div>
   )}
@@ -63,4 +54,4 @@ function mapStateToProps({ users ,authedUser})
         
     }
 }
-export default connect(mapStateToProps, {setAuthedUser} )(Login);
+export default withRouter(connect(mapStateToProps, {setAuthedUser} )(Login));
