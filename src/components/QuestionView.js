@@ -25,8 +25,8 @@ class  QuestionView extends Component {
         <h3>_____________Or______________</h3>
         <h3>{qid[1].optionTwo.text}?</h3>
         </div  >
-        {answerd==="true" ? <Button type="submit" component={Link} to={`/results/${qid[1].id}`} color="secondary"  >View Poll</Button>
-         : <Button type="submit" component={Link} to={`/answer/${qid[1].id}`} color="secondary"  >Answer Question</Button>}
+        {answerd==="true" ? <Button type="submit" component={Link} to={`/question/${qid[1].id}`} color="secondary"  >View Poll</Button>
+         : <Button type="submit" component={Link} to={`/question/${qid[1].id}`} color="secondary"  >Answer Question</Button>}
       </form>
     }
     </div>)
@@ -34,19 +34,9 @@ class  QuestionView extends Component {
 }
 function mapStateToProps({ questions , users, authedUser })
 {
- // const UserData=users[authedUser]
-  //const ansQuest=Object.entries(users[UserData.id].answers)
- 
-  //console.log("Answers:",questions[ansQuest[0][0]]
-  //)
- // console.log("important",UserData)
- 
-      return{
-        
-    //    id,
+    return{
         questions:Object.entries(questions),
         users
-        //ansQuest:questions[ansQuest[0][0]]
     }
 }
 export default withRouter(connect(mapStateToProps)(QuestionView))

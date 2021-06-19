@@ -18,7 +18,7 @@ class  NewQuestion extends Component {
       optionOneText:this.state.optionOne,
       optionTwoText: this.state.optionTwo
     }))
-    this.props.history.push(`/dashboard/${this.props.authedUser}`)
+    this.props.history.push(`/dashboard`)
   }
   updateQuery = (query) => {
     if(query){
@@ -40,7 +40,7 @@ updateQuery1 = (query) => {
   
    <form onSubmit={this.handleSubmit}  className="box">
    <div >
-     <h2 class='center'>Create New Questions</h2>
+     <h2 >Create New Questions</h2>
   
      <h3>Would you rather</h3>
    </div>
@@ -71,7 +71,7 @@ updateQuery1 = (query) => {
         />
      
      <br/>
-     <Button type="submit" component={Link} to={`/dashboard/${this.props.authedUser}`} 
+     <Button type="submit" component={Link} to={`/dashboard}`} 
      disabled={this.state.optionOne==='' || this.state.optionTwo===''} color="secondary" onClick={this.handleSubmit} >Answer Question</Button>
   
     </form>

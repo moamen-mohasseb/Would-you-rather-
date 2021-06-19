@@ -17,7 +17,7 @@ class  Nav extends Component {
   handleSubmit = e => {
     e.preventDefault();
     this.props.deleteAuthedUser();
-    this.props.history.push('/login')
+   // this.props.history.push('/login')
   };
   render(){
     console.log("nav :",this.props)
@@ -30,7 +30,7 @@ class  Nav extends Component {
     <Toolbar className='navigationbar'>
       <Box className='item' >
       <ListItem button>
-      <Link to={`/dashboard/${this.props.authedUser}`} >Home</Link>
+      <Link to={`/dashboard`} >Home</Link>
       </ListItem>
       </Box>
       <Box className='item' >

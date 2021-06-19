@@ -14,7 +14,6 @@ class  Login extends Component {
   }
   handelSubmit = () => {
     this.props.setAuthedUser(this.state.user)
-    this.props.history.push(`/dashboard/${this.state.user}`) 
   }
   render(){
       const { userid } =this.props

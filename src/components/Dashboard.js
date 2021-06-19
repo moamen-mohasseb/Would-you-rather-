@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import Questionview from './QuestionView'
 import {Tab,Tabs,AppBar} from '@material-ui/core';
-
-
-//const { children, value, index, ...other } = props
-
 class  Dashboard extends Component {
   state={
     value:0
@@ -29,19 +25,21 @@ class  Dashboard extends Component {
      </Tabs>
      </AppBar>
      {value===1 && this.props.answerdQuestion.map(qid =>
-      <div key={qid.id}>
+     <div key={qid}>
+       <Questionview answerd="true" qid={qid}/>
+     </div>
+     )}
+     {value===0 && this.props.unAnswerdQuestion.map(qid =>
+     <div key={qid}>
+       <Questionview answerd="false" qid={qid}/>
+     </div>
+      )}
+           
+      
+  </div>
+  </div>
+   )}
 
-    <Questionview answerd="true" key={qid.id} qid={qid}/>
-    </div>
-      )}
-           {value===0 && this.props.unAnswerdQuestion.map(qid =>
-      <div key={qid.id}>
-    <Questionview answerd="false" key={qid.id} qid={qid}/>
-    </div>
-      )}
-  </div>
-  </div>
-  )}
 }
 function mapStateToProps({ questions , users, authedUser })
 {
