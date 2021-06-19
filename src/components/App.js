@@ -36,7 +36,7 @@ class  App extends Component {
              <Route path={`/dashboard/${this.props.authedUser}`}  component={Dashboard} />
              <Route path='/results/:id'  component={VotesResults} />
              <Route  path='/leaderboard'  component={LeaderBoard} />
-             <Route  path='/newquestion'  component={NewQuestion} />
+             <Route  path='/add'  component={NewQuestion} />
              <Route  path='/answer/:id'  component={Question} />
              <Route render={()=> <Header as="h3">No Match 404 Error</Header>} />
              </Switch>

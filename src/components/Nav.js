@@ -35,7 +35,7 @@ class  Nav extends Component {
       </Box>
       <Box className='item' >
       <ListItem button>
-      <Link to="/newquestion" >Add new question</Link>
+      <Link to="/add" >Add new question</Link>
       </ListItem>
       </Box>
       <Box className='item' >
@@ -46,9 +46,11 @@ class  Nav extends Component {
       <Box className='item' >
         <ListItem button>
           <ListItemAvatar>
+            <div>
           {this.props.authedUser &&  
              <Avatar alt={this.props.user.name} src={this.props.user.avatarURL} className="imagesize" /> 
    }
+   </div>
           </ListItemAvatar>
           <ListItemText primary={this.props.authedUser} />
         </ListItem>

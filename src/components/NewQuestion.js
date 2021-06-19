@@ -43,9 +43,8 @@ updateQuery1 = (query) => {
   
    <form onSubmit={this.handleSubmit}  className="box">
    <div >
-     <h2>Create New Questions</h2>
+     <h2 class='center'>Create New Questions</h2>
   
-     <h3>Complete Question</h3>
      <h3>Would you rather</h3>
    </div>
      <TextField

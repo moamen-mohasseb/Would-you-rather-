@@ -10,6 +10,8 @@ import Button from '@material-ui/core/Button';
 import {handleSaveAnswer} from '../actions/shared'
 import {Header } from 'semantic-ui-react';
 import Login from './Login'
+import { Image} from 'semantic-ui-react'
+
 class  AnswerQuestion extends Component {
   state={
     value:"optionOne",
@@ -43,27 +45,24 @@ class  AnswerQuestion extends Component {
   render(){
   //  console.log("here iam: ",this.props)
   try{
-    const {questions,id}=this.props
+    const {questions,id,user}=this.props
    return (
     <div  className="container">
     {
       <form onSubmit={this.handleSubmit}>
-      
-        <div><h2>{questions[id].author} Ask this Question </h2></div>
-        <div styles={"background-image : url(./images/1.png)"}>
-        <h2>Would you Rather {id} </h2>
+        <Image alt={user.name} src={user.avatarURL} className="imagesize" />
+        <div><h2>{user.name} Ask </h2></div>
+        <h2>Would you Rather </h2>
         <FormControl component="fieldset">
       <FormLabel component="legend">Would you Rather</FormLabel>
       <RadioGroup aria-label="Would you Rather" name="quesChoice" value={this.state.value} onChange={this.handleChange}>
         <FormControlLabel value='optionOne' control={<Radio />} label={questions[id].optionOne.text} />
         <FormControlLabel value='optionTwo' control={<Radio />} label={questions[id].optionTwo.text} />
         </RadioGroup>
-      </FormControl>
-                </div  >
         <Button type="submit" component={Link} to={`/results/${questions[id]}`} color="secondary" onClick={this.handleSubmit} >Answer Question</Button>
-       
-
-      </form>
+      </FormControl>
+        
+       </form>
     }
     </div>)
   }
@@ -89,6 +88,7 @@ function mapStateToProps({ questions , users, authedUser },props)
         
         id,
         questions,
+        user:users[questions[id].author],
         users:Object.entries(users),
         authedUser
     }
